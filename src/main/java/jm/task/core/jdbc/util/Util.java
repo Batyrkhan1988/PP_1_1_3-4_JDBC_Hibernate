@@ -20,6 +20,7 @@ public class Util {
                 System.out.println("Соединение с БД установлено.");
             }
         } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
             System.err.println("Не удалось загрузить класс драйвера!");
         }
         return connection;
