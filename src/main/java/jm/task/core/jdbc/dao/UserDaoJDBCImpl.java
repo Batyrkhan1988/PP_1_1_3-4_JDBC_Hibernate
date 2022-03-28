@@ -14,56 +14,61 @@ public class UserDaoJDBCImpl implements UserDao {
 
     }
     // Создание таблицы для User(ов) – не должно приводить к исключению, если такая таблица уже существует
+    @Override
     public void createUsersTable() {
-        try (Statement statement = connection.createStatement()) {
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS db.users" +
-                    "(id mediumint not null auto_increment," +
-                    "name VARCHAR(45)," +
-                    "lastname VARCHAR(45)," +
-                    "age tinyint," +
-                    "PRIMARY KEY (id))");
-            System.out.println("Таблица создана");
-            System.out.println();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    // Удаление таблицы User(ов) – не должно приводить к исключению, если таблицы не существует
-    public void dropUsersTable() {
-        try (Statement statement = connection.createStatement()) {
-            statement.executeUpdate("DROP TABLE IF EXISTS db.users");
-            System.out.println("Таблица удалена");
-            System.out.println();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    // Добавление User в таблицу
-    public void saveUser(String name, String lastName, byte age) {
-        String sql = "INSERT INTO db.users(name, lastname, age) VALUES(?,?,?)";
+        final String sql = "CREATE TABLE IF NOT EXISTS users (id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT," +
+                "name VARCHAR(45) NOT NULL, lastname VARCHAR(45) NOT NULL, age TINYINT NOT NULL);";
+
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Удаление таблицы User(ов) – не должно приводить к исключению, если таблицы не существует
+    @Override
+    public void dropUsersTable() {
+        final String sql = "DROP TABLE IF EXISTS users";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.execute(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Добавление User в таблицу
+    @Override
+    public void saveUser(String name, String lastName, byte age) {
+        final String sql = "INSERT INTO users(name, lastname, age) VALUES(?, ?, ?);";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)){
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, lastName);
             preparedStatement.setByte(3, age);
             preparedStatement.executeUpdate();
-            System.out.println("User – " + name + " " + lastName + " добавлен в базу данных");
-            System.out.println();
+
+            System.out.println("User с именем - " + name + " добавлен в базу данных");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
     // Удаление User из таблицы ( по id )
+    @Override
     public void removeUserById(long id) {
-        try (Statement statement = connection.createStatement()) {
-            String sql = "DELETE FROM db.users WHERE id";
-            statement.executeUpdate(sql);
-            System.out.println("User " + id + " удален");
-            System.out.println();
+        final String sql = "DELETE FROM users WHERE ID=?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
     // Получение всех User(ов) из таблицы
+    @Override
     public List<User> getAllUsers() {
         List<User> allUser = new ArrayList<>();
         String sql = "SELECT id, name, lastName, age FROM db.users";
@@ -86,15 +91,14 @@ public class UserDaoJDBCImpl implements UserDao {
         return allUser;
     }
     // Очистка содержания таблицы
+    @Override
     public void cleanUsersTable() {
-        String sql = "TRUNCATE db.users";
-        try (Statement statement = connection.createStatement()) {
-            statement.executeUpdate(sql);
-            System.out.println("Таблица очищена");
-            System.out.println();
+        final String sql = "TRUNCATE TABLE users";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Не удалось очистить");
         }
     }
 }

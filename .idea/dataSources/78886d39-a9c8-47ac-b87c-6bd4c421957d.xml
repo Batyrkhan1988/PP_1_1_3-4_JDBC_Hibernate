@@ -1027,17 +1027,14 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </column>
     <column id="288" parent="286" name="name">
       <DataType>varchar(45)|0s</DataType>
-      <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="289" parent="286" name="lastName">
+    <column id="289" parent="286" name="lastname">
       <DataType>varchar(45)|0s</DataType>
-      <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
     <column id="290" parent="286" name="age">
       <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
     <key id="291" parent="286" name="PRIMARY">

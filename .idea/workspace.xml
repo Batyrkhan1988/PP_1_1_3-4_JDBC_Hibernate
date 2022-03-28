@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ec34987-ace2-4bce-905c-351ac111228a" name="Changes" comment="19.03.2022 Амирханов Б.А.">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/78886d39-a9c8-47ac-b87c-6bd4c421957d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/78886d39-a9c8-47ac-b87c-6bd4c421957d.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jm/task/core/jdbc/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jm/task/core/jdbc/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jm/task/core/jdbc/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jm/task/core/jdbc/util/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jm/task/core/jdbc/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jm/task/core/jdbc/service/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/jm/task/core/jdbc/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jm/task/core/jdbc/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/jm/task/core/jdbc/util/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jm/task/core/jdbc/util/Util.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,6 +115,8 @@
       <workItem from="1647713551973" duration="7000" />
       <workItem from="1647714377921" duration="2670000" />
       <workItem from="1647770552828" duration="2171000" />
+      <workItem from="1648471672265" duration="702000" />
+      <workItem from="1648497295366" duration="1343000" />
     </task>
     <task id="LOCAL-00001" summary="19.03.2022 Амирханов Б.А.">
       <created>1647711093210</created>
